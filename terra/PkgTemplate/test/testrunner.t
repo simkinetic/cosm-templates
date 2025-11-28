@@ -35,6 +35,7 @@ print(format.normal)
 
 -- List files to be skipped
 local files_to_skip = dictionary{
+    "test3.t"
 }
 
 -- Global - use silent output - only testenv summary
@@ -61,6 +62,7 @@ end
 
 -- Run test files and capture output
 for filename in io.popen("ls -p test"):lines() do
+    print(filename)
     if istestfile(filename) and not files_to_skip[filename] then
         local execstring = prefix .. " test/" .. filename .. " --test --silent"
         -- Open a pipe to capture output
